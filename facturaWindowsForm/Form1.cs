@@ -90,7 +90,55 @@ namespace facturaWindowsForm
             DataGridViewRow row = ((DataGridViewRow)(dataGridView2.Rows[e.RowIndex]));
             double cantidad = Convert.ToDouble(row.Cells[1].Value.ToString());
             double PU = Convert.ToDouble(row.Cells[3].Value);
-            row.Cells[4].Value = (cantidad*PU);
+            row.Cells[4].Value = (cantidad * PU);
+        }
+
+        private void btnborrar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+
+                int ID = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells["ID"].Value);
+
+                string conexion1 = "Data Source=.; Initial Catalog = facturacion;" + "Integrated Security = true;";
+
+                using SqlConnection conexion = new SqlConnection(conexion1);
+
+                {
+                    conexion.Open();
+
+                    string query = "DELETE FROM factura where ID = @ID";
+
+                    using (SqlCommand comando = new SqlCommand(query, conexion))
+                    {
+
+                        comando.Parameters.AddWithValue("@ID", ID);
+
+
+                        int rowsAffected = comando.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+
+                            MessageBox.Show("El registro se eliminó Correctamente. ");
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar el registro.  ");
+
+                        }
+
+                    }
+
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Por favor selecciona un registro para eliminar");
+            
+            }
         }
     }
 }

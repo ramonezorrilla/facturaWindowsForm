@@ -35,6 +35,8 @@
             PU = new DataGridViewTextBoxColumn();
             dataGridView2 = new DataGridView();
             btnguardar = new Button();
+            btncancelar = new Button();
+            btnborrar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -89,11 +91,32 @@
             btnguardar.UseVisualStyleBackColor = true;
             btnguardar.Click += btnguardar_Click;
             // 
+            // btncancelar
+            // 
+            btncancelar.Location = new Point(503, 381);
+            btncancelar.Name = "btncancelar";
+            btncancelar.Size = new Size(75, 23);
+            btncancelar.TabIndex = 3;
+            btncancelar.Text = "CANCELAR";
+            btncancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnborrar
+            // 
+            btnborrar.Location = new Point(392, 381);
+            btnborrar.Name = "btnborrar";
+            btnborrar.Size = new Size(75, 23);
+            btnborrar.TabIndex = 4;
+            btnborrar.Text = "BORRAR";
+            btnborrar.UseVisualStyleBackColor = true;
+            btnborrar.Click += btnborrar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnborrar);
+            Controls.Add(btncancelar);
             Controls.Add(btnguardar);
             Controls.Add(dataGridView2);
             Controls.Add(dataGridView1);
@@ -114,5 +137,7 @@
         private DataGridViewTextBoxColumn PU;
         private DataGridView dataGridView2;
         private Button btnguardar;
+        private Button btncancelar;
+        private Button btnborrar;
     }
 }
