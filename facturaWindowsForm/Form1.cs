@@ -69,6 +69,9 @@ namespace facturaWindowsForm
 
                 }
                 MessageBox.Show("Guardado con exito");
+
+                dataGridView1.Rows.Clear();
+
             }
             catch (Exception ex)
             {
@@ -98,16 +101,14 @@ namespace facturaWindowsForm
             if (dataGridView2.SelectedRows.Count > 0)
             {
 
-                int ID = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells["ID"].Value);
+                int ID = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells[0].Value);
 
-                string conexion1 = "Data Source=.; Initial Catalog = facturacion;" + "Integrated Security = true;";
-
-                using SqlConnection conexion = new SqlConnection(conexion1);
+                SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog = facturacion;" + "Integrated Security = true;");
 
                 {
                     conexion.Open();
 
-                    string query = "DELETE FROM factura where ID = @ID";
+                    string query = "DELETE FROM factura where item = @id";
 
                     using (SqlCommand comando = new SqlCommand(query, conexion))
                     {
@@ -120,6 +121,7 @@ namespace facturaWindowsForm
                         {
 
                             MessageBox.Show("El registro se eliminó Correctamente. ");
+                            verdatos();
 
                         }
 
@@ -137,8 +139,13 @@ namespace facturaWindowsForm
             else
             {
                 MessageBox.Show("Por favor selecciona un registro para eliminar");
-            
+
             }
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

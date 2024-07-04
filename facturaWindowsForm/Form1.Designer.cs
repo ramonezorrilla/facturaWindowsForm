@@ -99,6 +99,7 @@
             btncancelar.TabIndex = 3;
             btncancelar.Text = "CANCELAR";
             btncancelar.UseVisualStyleBackColor = true;
+            btncancelar.Click += btncancelar_Click;
             // 
             // btnborrar
             // 
